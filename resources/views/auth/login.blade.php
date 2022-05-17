@@ -41,7 +41,7 @@
             </div>
 
             <div class="py-4 flex justify-center">
-                <a href="{{ route('register') }}" class="a-link">
+                <a href="{{ route('register') }}" class="a-link-secundary">
                     Registrarte
                 </a>
 

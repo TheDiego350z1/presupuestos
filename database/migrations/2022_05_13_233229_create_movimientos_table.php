@@ -19,6 +19,11 @@ return new class extends Migration
             $table->decimal('monto', 10, 2);
             $table->date('fecha');
             $table->text('imagen');
+
+            /*
+             * Ingreso = 1
+             * Egreso = 0
+             */
             $table->boolean('tipo');
             $table->unsignedBigInteger('user_id');
 
