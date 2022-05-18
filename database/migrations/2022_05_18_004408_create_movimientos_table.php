@@ -18,7 +18,12 @@ return new class extends Migration
             $table->string('nombre');
             $table->decimal('monto', 10, 2);
             $table->date('fecha');
-            $table->text('imagen');
+
+            /**
+             * El campo de imagen guarda el
+             * url de la imagen, permite campos nullos
+             */
+            $table->text('imagen')->nullable();
 
             /*
              * Ingreso = 1
@@ -26,9 +31,12 @@ return new class extends Migration
              */
             $table->boolean('tipo');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('etiqueta_id')->nullable();
 
             $table->foreign('user_id')
                     ->references('id')->on('users');
+            $table->foreign('etiqueta_id')
+                    ->references('id')->on('etiquetas');
             $table->timestamps();
         });
     }
