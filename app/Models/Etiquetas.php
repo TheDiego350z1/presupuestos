@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Etiquetas extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nombre',
+        'tipo',
+        'user_id'
+    ];
 }

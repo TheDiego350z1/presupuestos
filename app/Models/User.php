@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Movimientos::class, 'user_id');
     }
+
+    public function etiquetas()
+    {
+        return $this->hasMany(Etiquetas::class, 'etiqueta_id');
+    }
 }
