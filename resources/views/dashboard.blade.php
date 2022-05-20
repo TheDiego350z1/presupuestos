@@ -13,9 +13,15 @@
                     @livewire('etiquetas.crear')
                 </div>
 
-                <div class="py-8">
+                <div class="py-8 flex ">
 
-                    @livewire('movimientos.ingresos')
+                    <div>
+                        @livewire('movimientos.ingresos')
+                    </div>
+                    <div>
+                        @livewire('movimientos.egresos')
+                    </div>
+
 
                 </div>
 
