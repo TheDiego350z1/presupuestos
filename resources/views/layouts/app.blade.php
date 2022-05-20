@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/lib.css') }}">
 
         @livewireStyles
 
@@ -42,5 +43,15 @@
         @stack('modals')
 
         @livewireScripts
+        <script>
+
+            Livewire.on('exito', function(message){
+                Swal.fire({
+                        icon: 'success',
+                        text: message
+                    })
+            })
+
+        </script>
     </body>
 </html>
