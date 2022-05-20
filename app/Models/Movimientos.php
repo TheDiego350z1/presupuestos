@@ -15,6 +15,7 @@ class Movimientos extends Model
         'fecha',
         'imagen',
         'tipo',
+        'saldo',
         'user_id',
         'etiqueta_id'
     ];

@@ -14,4 +14,6 @@ class Etiquetas extends Model
         'tipo',
         'user_id'
     ];
+
+    //todo relación con modelo Usuario y modelo movimieto
 }

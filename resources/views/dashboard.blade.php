@@ -13,6 +13,12 @@
                     @livewire('etiquetas.crear')
                 </div>
 
+                <div class="py-8">
+
+                    @livewire('movimientos.ingresos')
+
+                </div>
+
             </div>
         </div>
     </div>

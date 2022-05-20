@@ -17,7 +17,13 @@ class MovimientosFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->name(),
+            'monto' => $this->faker->randomFloat(1, 20, 30),
+            'fecha' => $this->faker->date(),
+            'imagen' => $this->faker->image('public/storage/', 640, 480, null, true),
+            'tipo' => 1,
+            'saldo' => 0,
+            'user_id' => 1
         ];
     }
 }
