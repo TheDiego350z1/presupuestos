@@ -30,7 +30,6 @@ return new class extends Migration
              * Egreso = 0
              */
             $table->boolean('tipo');
-            $table->decimal('saldo');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('etiqueta_id')->nullable();
 

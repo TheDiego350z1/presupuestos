@@ -6,7 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 
 use App\Models\Etiquetas;
-
+use App\Models\User;
 use App\Models\Movimientos;
 
 class Egresos extends Component
@@ -21,7 +21,6 @@ class Egresos extends Component
         'nombre' => 'required',
         'monto' => 'required',
         'fecha' => 'required',
-        'photo' => 'image|max:2048'
     ];
 
     public function mount()
@@ -40,12 +39,16 @@ class Egresos extends Component
 
     public function guardar()
     {
+
         $file = null;
 
         $this->validate();
 
         if($this->photo)
         {
+            $this->validate([
+                'photo' => 'image|max:2048'
+            ]);
             $file = $this->photo->store('public/photos');
         }
 
@@ -54,7 +57,6 @@ class Egresos extends Component
             'monto' => $this->monto,
             'fecha' => $this->fecha,
             'imagen' => $file,
-            'saldo' => $this->monto,
             'tipo' => 0,
             'user_id' => auth()->user()->id,
             'etiqueta_id' => $this->tipo

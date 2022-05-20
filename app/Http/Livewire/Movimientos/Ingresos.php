@@ -41,10 +41,15 @@ class Ingresos extends Component
     public function guardar()
     {
         $file = null;
+
         $this->validate();
 
         if($this->photo)
         {
+            $this->validate([
+                'photo' => 'image|max:2048'
+            ]);
+
             $file = $this->photo->store('public/photos');
         }
 
@@ -53,7 +58,6 @@ class Ingresos extends Component
             'monto' => $this->monto,
             'fecha' => $this->fecha,
             'imagen' => $file,
-            'saldo' => $this->monto,
             'tipo' => 1,
             'user_id' => auth()->user()->id,
             'etiqueta_id' => $this->tipo
