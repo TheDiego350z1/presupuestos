@@ -15,6 +15,11 @@
             'route' => route('egresos'),
             'active' => request()->routeIs('egresos')
         ],
+        [
+            'name' => 'Reportes',
+            'route' => route('reportes'),
+            'active' => request()->routeIs('reportes')
+        ],
     ];
 @endphp
 

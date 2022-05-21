@@ -8,7 +8,7 @@
 
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
-            Ingreos
+            Ingresos
         </x-slot>
         <x-slot name="content">
 
