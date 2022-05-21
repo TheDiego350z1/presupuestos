@@ -27,6 +27,6 @@ class Movimientos extends Model
 
     public function etiqueta()
     {
-        return $this->belonsTo(Etiquetas::class, 'etiqueta_id');
+        return $this->belongsTo(Etiquetas::class, 'etiqueta_id');
     }
 }

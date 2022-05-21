@@ -27,3 +27,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/entradas', function(){
+    return view('entradas');
+})->middleware('auth')->name('entradas');

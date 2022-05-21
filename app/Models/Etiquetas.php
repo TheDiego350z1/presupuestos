@@ -16,4 +16,9 @@ class Etiquetas extends Model
     ];
 
     //todo relación con modelo Usuario y modelo movimieto
+
+    public function movimientos()
+    {
+        return $this->hasMany(Movimientos::class, 'etiqueta_id');
+    }
 }
