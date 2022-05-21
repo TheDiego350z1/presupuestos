@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Movimientos;
 
-class Reportes extends Controller
+class ReportesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,25 +14,19 @@ class Reportes extends Controller
      */
     public function index()
     {
-        //
-        $entradas = null;
         $entradas = Movimientos::where('tipo', '=', 1)
                     ->join('etiquetas','movimientos.tipo','=','etiquetas.tipo')
                     ->select('etiquetas.nombre',Movimientos::raw('SUM(movimientos.monto) as ToTalIngresos'))
                     ->orderBy('nombre', 'desc')
                     ->get();
 
-        $salidas = null;
         $salidas = Movimientos::where('tipo', '=', 0)
                     ->join('etiquetas','movimientos.tipo','=','etiquetas.tipo')
                     ->select('etiquetas.nombre',Movimientos::raw('SUM(movimientos.monto) as ToTalIngresos'))
                     ->orderBy('nombre', 'desc')
                     ->get();
 
-        //var_dump($entradas);
-        //dd($salidas);
-
-        return view('reportes.index',compact([$entradas=>'entradas'],'salidas'));
+        return vire('reportes.index', compact('entradas', 'salidas'));
     }
 
     /**

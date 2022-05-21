@@ -36,6 +36,8 @@ Route::get('/egresos', function(){
     return view('egresos');
 })->middleware('auth')->name('egresos');
 
-Route::get('/reportes', function(){
-    return view('reportes.index');
-})->middleware('auth')->name('reportes');
+Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'])->name('reportes');
+
+// Route::get('/reportes', function(){
+//     return view('reportes.index');
+// })->middleware('auth')->name('reportes');
