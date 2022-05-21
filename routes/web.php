@@ -31,3 +31,7 @@ Route::middleware([
 Route::get('/entradas', function(){
     return view('entradas');
 })->middleware('auth')->name('entradas');
+
+Route::get('/egresos', function(){
+    return view('egresos');
+})->middleware('auth')->name('egresos');

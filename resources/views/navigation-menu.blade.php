@@ -10,6 +10,11 @@
             'route' => route('entradas'),
             'active' => request()->routeIs('entradas')
         ],
+        [
+            'name' => 'Egresos',
+            'route' => route('egresos'),
+            'active' => request()->routeIs('egresos')
+        ],
     ];
 @endphp
 
