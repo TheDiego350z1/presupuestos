@@ -38,6 +38,4 @@ Route::get('/egresos', function(){
 
 Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'])->name('reportes');
 
-// Route::get('/reportes', function(){
-//     return view('reportes.index');
-// })->middleware('auth')->name('reportes');
+Route::get('/reportes/generate-pdf', [App\Http\Controllers\ReportesController::class, 'generatePDF'])->name('generatePDF');
