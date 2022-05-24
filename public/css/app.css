@@ -1539,6 +1539,10 @@ select {
   padding-left: 12rem;
   padding-right: 12rem;
 }
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
 .pt-6 {
   padding-top: 1.5rem;
 }

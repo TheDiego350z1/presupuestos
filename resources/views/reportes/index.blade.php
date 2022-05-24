@@ -1,6 +1,7 @@
 <x-app-layout>
-    <div class="container mx-auto px-48 pt-5">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded" onclick="location.href='{{ route('generatePDF') }}'">Exportar PDF</button>
+    <div class="container mx-auto px-24 pt-5" id="testPdf">
+        <!--<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded" onclick="location.href='{{ route('generate_mPDF') }}'">Exportar PDF</button>-->
+        <button id="exportButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded" onclick="generatePdf()">Exportar PDF</button>
         <div class="border-2 border-solid border-indigo-600 text-center">
             <h1>REPORTE MENSUAL 2022-05-01 / 2022-05-31</h1>
         </div>
@@ -68,26 +69,46 @@
         <div class="border-2 border-solid border-indigo-600 text-center">
             <h1>GRAFICO DE BALANCE MENSUAL ENTRADAS VS SALIDAS</h1>
         </div>
-        <canvas class="mx-auto" id="myChart" style="width:100%;max-width:700px"></canvas>
+        <canvas type="hidden" class="mx-auto" id="myChart" style="width:100%;max-width:700px"></canvas>
     </div>
 </x-app-layout>
-<script>
-var barColors = ["red", "green","blue","orange","brown"];
+<script src="js/html2pdf.bundle.js" defer></script>
+<script type="text/javascript">
+    var barColors = ["red", "green","blue","orange","brown"];
 
-new Chart("myChart", {
-  type: "pie",
-  data: {
-    labels: {{ Js::from($dataGrafico['label']) }},
-    datasets: [{
-      backgroundColor: barColors,
-      data: {{ Js::from($dataGrafico['data'])}}
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: "Gráfica de Balance"
-    }
-  }
-});
+    $chartConfig = new Chart("myChart", {
+                    type: "pie",
+                    data: {
+                        labels: {{ Js::from($dataGrafico['label']) }},
+                        datasets: [{
+                        backgroundColor: barColors,
+                        data: {{ Js::from($dataGrafico['data'])}}
+                        }]
+                    },
+                    options: {
+                        title: {
+                        display: true,
+                        text: "Gráfica de Balance"
+                        }
+                    }
+                    });
+
+    function generatePdf(){
+        document.getElementById("exportButton").style.display = 'none';
+
+        const element = document.getElementById("testPdf");
+
+        var opt = {
+            margin:0,
+            filename:'Balance mensual.pdf',
+            image:{ type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:{ unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+
+        html2pdf()
+        .set(opt)
+        .from(element)
+        .save();
+}
 </script>

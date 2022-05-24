@@ -39,3 +39,5 @@ Route::get('/egresos', function(){
 Route::get('/reportes', [App\Http\Controllers\ReportesController::class, 'index'])->name('reportes');
 
 Route::get('/reportes/generate-pdf', [App\Http\Controllers\ReportesController::class, 'generatePDF'])->name('generatePDF');
+
+Route::get('/reportes/generate-mpdf', [App\Http\Controllers\ReportesController::class, 'generate_mPDF'])->name('generate_mPDF');
